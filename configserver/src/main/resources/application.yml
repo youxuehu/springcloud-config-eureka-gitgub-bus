@@ -1,0 +1,28 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/youxuehu/cloud-config
+          username: youxuehu
+          password: zhf123..
+          search-paths: config-repo
+    stream:
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers: localhost
+          zkNodes: localhost
+          defaultZkPort: 2181
+          defaultBrokerPort: 9092
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  security:
+    enabled: false
