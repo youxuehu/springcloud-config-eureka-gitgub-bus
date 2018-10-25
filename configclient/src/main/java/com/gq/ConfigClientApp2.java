@@ -6,9 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,16 +15,17 @@ import java.util.Scanner;
 @RestController
 @EnableEurekaClient
 @RefreshScope
-public class ConfigClientApp {
+public class ConfigClientApp2 {
     public static void main(String[] args) {
         int port = new Scanner(System.in).nextInt();
-        new SpringApplicationBuilder(ConfigClientApp.class).properties("server.port="+port).web(true).run(args);
+        new SpringApplicationBuilder(ConfigClientApp2.class).properties("server.port="+port).web(true).run(args);
+
     }
 
     @Value("${name.node}")
     String name;
 
-    @RequestMapping(value = "/hi")
+    @RequestMapping(value = "/hi2")
     public String hi() {
         System.out.println(name);
         return name;
